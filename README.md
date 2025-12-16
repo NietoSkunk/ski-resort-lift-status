@@ -251,7 +251,7 @@ The following ski resorts are available for use. Pull requests are always apprec
     ```
     python -m venv .venv
     source .venv/bin/activate
-    pip install -r requirements.txt requirements-dev.txt
+    pip install -r requirements.txt -r requirements-dev.txt
     ```
 
 3) Install package as an editable library:
