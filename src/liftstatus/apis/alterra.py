@@ -102,7 +102,10 @@ class AlterraMountain(liftstatus.Mountain):
 
     def _find_bearer_token_and_resort_ids(self):
         logger.debug(f"Requesting Bearer Token from Mountain Feed: {self._server_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
-        serverResponse = self._session.get(self._server_url, headers={"User-Agent": liftstatus._USER_AGENT})
+        serverResponse = self._session.get(self._server_url,
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
+        )
         serverResponse.raise_for_status()
 
         jsonObject = serverResponse.json()
@@ -124,7 +127,7 @@ class AlterraMountain(liftstatus.Mountain):
     def _map_lift_status(self, lift):
         if lift['StatusEnglish'] in ['closed', 'closed_for_season', 'mechanical_closure', 'closed_opens_tomorrow']:
             return liftstatus.LiftStatus.CLOSED
-        if lift['StatusEnglish'] == 'open':
+        if lift['StatusEnglish'] in ['open', 'open_to_mid_station_only']:
             return liftstatus.LiftStatus.OPEN
         if lift['StatusEnglish'] == 'delayed':
             return liftstatus.LiftStatus.DELAYED

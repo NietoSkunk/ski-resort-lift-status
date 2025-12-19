@@ -426,6 +426,8 @@ def test_hidden_valley_mo():
         'Ozark': liftstatus.LiftType.CLF_3,
         'Rope Tow': liftstatus.LiftType.SL,
         'Ski Carpet': liftstatus.LiftType.SL,
+        'Tubing East': liftstatus.LiftType.SL,
+        'Tubing West': liftstatus.LiftType.SL,
         'West Mtn': liftstatus.LiftType.CLF_4,
     }
 
@@ -569,6 +571,22 @@ def test_bmbw():
     lifts = test_obj.get_lift_status()
 
     expected_types = {
+        'Buena Vista - Boston Mills': liftstatus.LiftType.CLF_4,
+        'Carpet Lift': liftstatus.LiftType.SL,
+        'Conveyour - Boston Mills': liftstatus.LiftType.SL,
+        'Handle Tow': liftstatus.LiftType.SL,
+        'Lift 1 - Boston Mills': liftstatus.LiftType.CLF_2,
+        'Lift 1 - Brandywine': liftstatus.LiftType.CLF_4,
+        'Lift 2 - Boston Mills': liftstatus.LiftType.CLF_3,
+        'Lift 2 - Brandywine': liftstatus.LiftType.CLF_4,
+        'Lift 3 - Boston Mills': liftstatus.LiftType.CLF_3,
+        'Lift 4 - Boston Mills': liftstatus.LiftType.CLF_3,
+        'Lift 4 - Brandywine': liftstatus.LiftType.CLF_3,
+        'Lift 5 - Brandywine': liftstatus.LiftType.CLF_3,
+        'Lift 6 - Boston Mills': liftstatus.LiftType.CLF_3,
+        'Ram Quad - Brandywine': liftstatus.LiftType.CLF_4,
+        'Tubing Carpet Lift - Conveyor Snow Tubing 1': liftstatus.LiftType.SL,
+        'Tubing Carpet Lift - Conveyor Snow Tubing 2': liftstatus.LiftType.SL,
     }
 
     # _print_lifts(lifts)
@@ -668,6 +686,13 @@ def test_liberty():
     lifts = test_obj.get_lift_status()
 
     expected_types = {
+        'Alpine Quad': liftstatus.LiftType.CLF_4,
+        'Dipsy Quad': liftstatus.LiftType.CLF_4,
+        'Eastwind Quad': liftstatus.LiftType.CLF_4,
+        'First Class Carpet': liftstatus.LiftType.SL,
+        'First Class Quad': liftstatus.LiftType.CLF_4,
+        'Snow Cat Alley': liftstatus.LiftType.SL,
+        'Strata Quad': liftstatus.LiftType.CLF_4,
     }
 
     # _print_lifts(lifts)
@@ -730,6 +755,13 @@ def test_whitetail():
     lifts = test_obj.get_lift_status()
 
     expected_types = {
+        'Expert\'s Choice Quad': liftstatus.LiftType.CLF_4,
+        'EZ Rider Quad': liftstatus.LiftType.CLF_4,
+        'First Class Magic Carpet': liftstatus.LiftType.SL,
+        'Lift Off Quad': liftstatus.LiftType.CLF_4,
+        'The Launching Pad': liftstatus.LiftType.SL,
+        'U-Me Double': liftstatus.LiftType.CLF_2,
+        'Whitetail Express Quad': liftstatus.LiftType.CLD_4,
     }
 
     # _print_lifts(lifts)
