@@ -15,7 +15,10 @@ class ArapahoeBasin(liftstatus.Mountain):
     def get_lift_status(self):
         status_url = "https://www.arapahoebasin.com/snow-report/"
         logger.debug(f"Requesting Lift Status: {status_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
-        serverResponse = self._session.get(status_url, headers={"User-Agent": liftstatus._USER_AGENT})
+        serverResponse = self._session.get(status_url,
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
+        )
         serverResponse.raise_for_status()
 
         soup = BeautifulSoup(serverResponse.text, 'html.parser')
@@ -40,6 +43,8 @@ class ArapahoeBasin(liftstatus.Mountain):
                 lift_status = liftstatus.LiftStatus.CLOSED
             elif lift_status_str == 'open':
                 lift_status = liftstatus.LiftStatus.OPEN
+            elif lift_status_str == 'onhold':
+                lift_status = liftstatus.LiftStatus.HOLD
             else:
                 raise ValueError((lift_name, lift_status_str))
 

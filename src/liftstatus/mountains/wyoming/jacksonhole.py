@@ -17,7 +17,10 @@ class JacksonHole(liftstatus.Mountain):
     def get_lift_status(self):
         server_url = "https://jacksonhole-prod.zaneray.com/api/all.json"
         logger.debug(f"Requesting Lift Status: {server_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
-        serverResponse = self._session.get(server_url, headers={"User-Agent": liftstatus._USER_AGENT})
+        serverResponse = self._session.get(server_url,
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
+        )
         serverResponse.raise_for_status()
         responseJson = serverResponse.json()
 

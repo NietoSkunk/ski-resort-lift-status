@@ -68,7 +68,10 @@ class EpicMountain(liftstatus.Mountain):
     
     def _find_terrain_status(self):
         logger.debug(f"Requesting Lift Status: {self._server_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
-        serverResponse = self._session.get(self._server_url, headers={"User-Agent": liftstatus._USER_AGENT})
+        serverResponse = self._session.get(self._server_url,
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
+        )
         serverResponse.raise_for_status()
 
         soup = BeautifulSoup(serverResponse.text, 'html.parser')

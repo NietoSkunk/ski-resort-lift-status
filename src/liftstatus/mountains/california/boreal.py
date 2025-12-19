@@ -32,12 +32,12 @@ class Boreal(liftstatus.apis.powdr.POWDRMountain):
     def _map_open_time(self, lift):
         if lift['hours'].strip() == '':
             return None
-        return self._map_time(lift['hours'].split(' - ')[0])
+        return self._map_time(lift['hours'].replace(' - ', '-').split('-')[0])
 
     def _map_closed_time(self, lift):
         if lift['hours'].strip() == '':
             return None
-        return self._map_time(lift['hours'].split(' - ')[1])
+        return self._map_time(lift['hours'].replace(' - ', '-').split('-')[1])
     
     def _map_time(self, time_segment):
         if ':' in time_segment:

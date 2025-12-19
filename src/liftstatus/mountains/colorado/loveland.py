@@ -17,7 +17,10 @@ class Loveland(liftstatus.Mountain):
         status_url = "https://skiloveland.com/trail-lift-report/"
         # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
         logger.debug(f"Requesting Lift Status: {status_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
-        serverResponse = self._session.get(status_url, headers={"User-Agent": liftstatus._USER_AGENT})
+        serverResponse = self._session.get(status_url,
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
+        )
         serverResponse.raise_for_status()
 
         soup = BeautifulSoup(serverResponse.text, 'html.parser')

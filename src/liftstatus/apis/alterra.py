@@ -40,7 +40,8 @@ class AlterraMountain(liftstatus.Mountain):
         serverResponse = self._session.get(
             "https://mtnpowder.com/feed/v3.json",
             params={'bearer_token': bearer_token, 'resortId[]': resort_ids},
-            headers={"User-Agent": liftstatus._USER_AGENT}
+            headers={"User-Agent": liftstatus._USER_AGENT},
+            timeout=10
         )
         serverResponse.raise_for_status()
 
