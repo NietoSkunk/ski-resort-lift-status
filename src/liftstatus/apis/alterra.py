@@ -127,7 +127,7 @@ class AlterraMountain(liftstatus.Mountain):
             return liftstatus.LiftStatus.OPEN
         if lift['StatusEnglish'] == 'delayed':
             return liftstatus.LiftStatus.DELAYED
-        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure']:
+        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure']:
             return liftstatus.LiftStatus.HOLD
         if lift['StatusEnglish'] == 'open_ski_ride_school_only':
             return liftstatus.LiftStatus.RESTRICTED

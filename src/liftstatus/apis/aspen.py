@@ -73,6 +73,10 @@ class AspenMountain(liftstatus.Mountain):
             else:
                 raise ValueError((lift['liftName'], lift['type']))
 
+            if 'Surface Lift' in lift['liftName']:
+                # Hack, the Cirque SL is being reported as MGD, CLF_2, etc.
+                lift_type = liftstatus.LiftType.SL
+
             hours_of_operation = lift['hoursOfOperation'].split(' - ', maxsplit=2)
             
             open_time = None
