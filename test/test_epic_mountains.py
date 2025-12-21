@@ -558,6 +558,11 @@ def test_alpine_valley():
     lifts = test_obj.get_lift_status()
 
     expected_types = {
+        'Carpet Lift': liftstatus.LiftType.SL,
+        'Handle Tow': liftstatus.LiftType.SL,
+        'Snowbelt': liftstatus.LiftType.CLF_3,
+        'Sycamore Lake': liftstatus.LiftType.CLF_3,
+        'The Pine': liftstatus.LiftType.CLF_4,
     }
 
     # _print_lifts(lifts)

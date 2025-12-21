@@ -20,5 +20,7 @@ class AlpineValley(liftstatus.apis.epic.EpicMountain):
             return liftstatus.LiftType.CLF_4
         if lift['Type'] in ['triple']:
             return liftstatus.LiftType.CLF_3
+        if lift['Type'] in ['tow']:
+            return liftstatus.LiftType.SL
         
         raise liftstatus.exceptions.APIParseException(f"Unknown Type value for lift {lift['Name']}: {lift['Type']}")
