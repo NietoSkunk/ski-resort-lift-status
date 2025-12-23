@@ -127,11 +127,11 @@ class AlterraMountain(liftstatus.Mountain):
     def _map_lift_status(self, lift):
         if lift['StatusEnglish'] in ['closed', 'closed_for_season', 'mechanical_closure', 'closed_opens_tomorrow']:
             return liftstatus.LiftStatus.CLOSED
-        if lift['StatusEnglish'] in ['open', 'open_to_mid_station_only']:
+        if lift['StatusEnglish'] in ['open', 'open_to_mid_station_only', 'open_to_foot_traffic_only']:
             return liftstatus.LiftStatus.OPEN
         if lift['StatusEnglish'] == 'delayed':
             return liftstatus.LiftStatus.DELAYED
-        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure']:
+        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure', 'weather_hold']:
             return liftstatus.LiftStatus.HOLD
         if lift['StatusEnglish'] == 'open_ski_ride_school_only':
             return liftstatus.LiftStatus.RESTRICTED

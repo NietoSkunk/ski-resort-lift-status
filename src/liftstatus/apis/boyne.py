@@ -122,7 +122,7 @@ class BoyneMountain(liftstatus.Mountain):
             return liftstatus.LiftStatus.CLOSED
         if lift['status'] == 'Open':
             return liftstatus.LiftStatus.OPEN
-        if lift['status'] == 'Scheduled':
+        if lift['status'] in ['Scheduled', 'Delayed']:
             return liftstatus.LiftStatus.SCHEDULED
         if lift['status'] == 'On Hold':
             return liftstatus.LiftStatus.HOLD
