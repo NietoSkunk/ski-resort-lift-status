@@ -373,6 +373,7 @@ def test_mt_brighton():
         'Chair 4': liftstatus.LiftType.CLF_4,
         'Rope Tow 8': liftstatus.LiftType.SL,
         'Rope Tow 9': liftstatus.LiftType.SL,
+        'Rope Tow 12': liftstatus.LiftType.SL,
     }
 
     # _print_lifts(lifts)
