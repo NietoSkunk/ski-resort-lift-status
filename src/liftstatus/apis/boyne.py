@@ -120,7 +120,7 @@ class BoyneMountain(liftstatus.Mountain):
     def _map_lift_status(self, lift):
         if lift['status'] == 'Closed':
             return liftstatus.LiftStatus.CLOSED
-        if lift['status'] == 'Open':
+        if lift['status'] in ['Open', 'Scenic Only']:
             return liftstatus.LiftStatus.OPEN
         if lift['status'] in ['Scheduled', 'Delayed']:
             return liftstatus.LiftStatus.SCHEDULED

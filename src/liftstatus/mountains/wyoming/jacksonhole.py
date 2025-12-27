@@ -39,6 +39,8 @@ class JacksonHole(liftstatus.Mountain):
                 lift_status = liftstatus.LiftStatus.CLOSED
             elif lift['openingStatus'] == 'OPEN':
                 lift_status = liftstatus.LiftStatus.OPEN
+            elif lift['openingStatus'] == 'HOLD':
+                lift_status = liftstatus.LiftStatus.HOLD
             else:
                 raise liftstatus.exceptions.APIParseException(f"Unknown Status value for lift: {lift}")
             
