@@ -47,6 +47,8 @@ class BoyneMountain(liftstatus.Mountain):
 
         return_list = []
 
+        logger.debug(f"Status Icons: {responseJson['icons']['liftStatusIcons'].keys()}")
+
         for area in responseJson['facilities']['areas']['area']:
             lifts = area.get('lifts', {}).get('lift', [])
             if lifts is None:
@@ -118,15 +120,15 @@ class BoyneMountain(liftstatus.Mountain):
         return lift['name']
 
     def _map_lift_status(self, lift):
-        if lift['status'] == 'Closed':
+        if lift['statusIcon'] in ['closed']:
             return liftstatus.LiftStatus.CLOSED
-        if lift['status'] in ['Open', 'Scenic Only']:
+        if lift['statusIcon'] in ['open', 'scenic-only']:
             return liftstatus.LiftStatus.OPEN
-        if lift['status'] in ['Scheduled', 'Delayed']:
+        if lift['statusIcon'] in ['scheduled']:
             return liftstatus.LiftStatus.SCHEDULED
-        if lift['status'] == 'On Hold':
+        if lift['statusIcon'] in ['on-hold']:
             return liftstatus.LiftStatus.HOLD
-        if lift['status'] == 'Event':
+        if lift['statusIcon'] in ['event']:
             return liftstatus.LiftStatus.RESTRICTED
             
         raise liftstatus.exceptions.APIParseException(f"Unknown Status value ({lift['status']}) for lift {lift['name']}")

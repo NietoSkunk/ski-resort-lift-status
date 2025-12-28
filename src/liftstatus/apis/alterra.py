@@ -125,17 +125,23 @@ class AlterraMountain(liftstatus.Mountain):
         return lift['Name']
 
     def _map_lift_status(self, lift):
-        if lift['StatusEnglish'] in ['closed', 'closed_for_season', 'mechanical_closure', 'closed_opens_tomorrow']:
+        if lift['StatusEnglish'] in ['closed']:
             return liftstatus.LiftStatus.CLOSED
-        if lift['StatusEnglish'] in ['open', 'open_to_mid_station_only', 'open_to_foot_traffic_only']:
+        if lift['StatusEnglish'] in ['open']:
             return liftstatus.LiftStatus.OPEN
         if lift['StatusEnglish'] == 'delayed':
             return liftstatus.LiftStatus.DELAYED
-        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure', 'weather_hold', 'anticipated_weather_impact', 'mechanical_hold']:
+        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure', 'weather_hold', 'mechanical_hold']:
             return liftstatus.LiftStatus.HOLD
         if lift['StatusEnglish'] == 'open_ski_ride_school_only':
             return liftstatus.LiftStatus.RESTRICTED
         if lift['StatusEnglish'] in ['expected', 'scheduled']:
             return liftstatus.LiftStatus.SCHEDULED
+        
+        # Fallback
+        if lift['StatusIcon'] in ['open', 'ouvert']:
+            return liftstatus.LiftStatus.OPEN
+        if lift['StatusIcon'] in ['closed', 'closed-for-season', 'fermé', 'fermé-pour-la-saison']:
+            return liftstatus.LiftStatus.CLOSED
             
         raise liftstatus.exceptions.APIParseException(f"Unknown Status value ({lift['StatusEnglish']}) for lift {lift['Name']}")
