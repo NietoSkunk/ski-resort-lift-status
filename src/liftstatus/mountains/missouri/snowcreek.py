@@ -25,10 +25,12 @@ class SnowCreek(liftstatus.apis.epic.EpicMountain):
         #         return liftstatus.LiftType.CLD_4
         #     else:
         #         return liftstatus.LiftType.CLF_4
-        # if lift['Type'] in ['triple']:
-        #     return liftstatus.LiftType.CLF_3
-        # if lift['Type'] in ['conveyor', 't-bar']:
-        #     return liftstatus.LiftType.SL
+        if lift['Type'] in ['triple']:
+            return liftstatus.LiftType.CLF_3
+        if lift['Type'] in ['double']:
+            return liftstatus.LiftType.CLF_2
+        if lift['Type'] in ['conveyor', 't-bar']:
+            return liftstatus.LiftType.SL
         # if lift['Type'] in ['gondola']:
         #     if lift['Name'] == "PEAK 2 PEAK Gondola":
         #         return liftstatus.LiftType.TGD

@@ -443,6 +443,12 @@ def test_snow_creek():
 
     lifts = test_obj.get_lift_status()
     expected_types = {
+        'Easy Rider': liftstatus.LiftType.SL,
+        'Jayhawk': liftstatus.LiftType.CLF_3,
+        'Long Rider': liftstatus.LiftType.SL,
+        'Show Me': liftstatus.LiftType.CLF_3,
+        'Tiger': liftstatus.LiftType.CLF_2,
+        'Twister (Tubing Lift)': liftstatus.LiftType.SL,
     }
 
     # _print_lifts(lifts)

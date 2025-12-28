@@ -24,4 +24,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
           pip install -e .
-          pytest --log-level=DEBUG -s
+          pytest --log-level=DEBUG -s --retries 2 --retry-delay 300

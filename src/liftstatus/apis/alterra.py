@@ -41,7 +41,7 @@ class AlterraMountain(liftstatus.Mountain):
             "https://mtnpowder.com/feed/v3.json",
             params={'bearer_token': bearer_token, 'resortId[]': resort_ids},
             headers={"User-Agent": liftstatus._USER_AGENT},
-            timeout=10
+            timeout=30
         )
         serverResponse.raise_for_status()
 
@@ -104,7 +104,7 @@ class AlterraMountain(liftstatus.Mountain):
         logger.debug(f"Requesting Bearer Token from Mountain Feed: {self._server_url} (User Agent: \"{liftstatus._USER_AGENT}\")")
         serverResponse = self._session.get(self._server_url,
             headers={"User-Agent": liftstatus._USER_AGENT},
-            timeout=10
+            timeout=30
         )
         serverResponse.raise_for_status()
 
@@ -131,7 +131,7 @@ class AlterraMountain(liftstatus.Mountain):
             return liftstatus.LiftStatus.OPEN
         if lift['StatusEnglish'] == 'delayed':
             return liftstatus.LiftStatus.DELAYED
-        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure', 'weather_hold', 'anticipated_weather_impact']:
+        if lift['StatusEnglish'] in ['hold', 'wind_hold', 'wind_closure', 'lightning_closure', 'weather_hold', 'anticipated_weather_impact', 'mechanical_hold']:
             return liftstatus.LiftStatus.HOLD
         if lift['StatusEnglish'] == 'open_ski_ride_school_only':
             return liftstatus.LiftStatus.RESTRICTED
