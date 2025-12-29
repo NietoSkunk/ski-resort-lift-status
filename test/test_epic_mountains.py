@@ -936,6 +936,20 @@ def test_stevens_pass():
     lifts = test_obj.get_lift_status()
 
     expected_types = {
+        'Brooks Express': liftstatus.LiftType.CLD_4,
+        'Daisy': liftstatus.LiftType.CLF_4,
+        'Double Diamond': liftstatus.LiftType.CLF_3,
+        'Hogsback Express': liftstatus.LiftType.CLD_4,
+        'Jupiter Express': liftstatus.LiftType.CLD_4,
+        'Kehr\'s': liftstatus.LiftType.CLF_4,
+        'Marmot Carpet': liftstatus.LiftType.SL,
+        'Pika Carpet': liftstatus.LiftType.SL,
+        'Rope Tow 1': liftstatus.LiftType.SL,
+        'Rope Tow 2': liftstatus.LiftType.SL,
+        'Seventh Heaven': liftstatus.LiftType.CLF_2,
+        'Skyline Express': liftstatus.LiftType.CLD_4,
+        'Southern Cross': liftstatus.LiftType.CLF_3,
+        'Tye Mill': liftstatus.LiftType.CLF_3,
     }
 
     # _print_lifts(lifts)

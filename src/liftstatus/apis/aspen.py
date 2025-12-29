@@ -52,7 +52,7 @@ class AspenMountain(liftstatus.Mountain):
                 lift_status = liftstatus.LiftStatus.OPEN
             elif lift['status'] == 'Delayed':
                 lift_status = liftstatus.LiftStatus.DELAYED
-            elif lift['status'] in ['Hold', 'hold']:
+            elif lift['status'] in ['Hold', 'hold', 'on hold']:
                 lift_status = liftstatus.LiftStatus.HOLD
             else:
                 raise liftstatus.exceptions.APIParseException(f"Unknown Status value for lift: {lift}")
