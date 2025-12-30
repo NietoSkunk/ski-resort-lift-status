@@ -99,6 +99,7 @@ def test_soda_springs():
         'Planet Kids - East Sunrise Carpet': liftstatus.LiftType.SL,
         'Planet Kids - West Meadows Carpet': liftstatus.LiftType.SL,
         'Tube Town - Tube Express Carpet': liftstatus.LiftType.SL,
+        'Planet Kids Sleigh': liftstatus.LiftType.SL,
     }
 
     # _print_lifts(lifts)

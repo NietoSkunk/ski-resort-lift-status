@@ -21,15 +21,19 @@ class SodaSprings(liftstatus.apis.powdr.POWDRMountain):
             return liftstatus.LiftType.CLF_3
         elif lift['type'] in ['double']:
             return liftstatus.LiftType.CLF_2
-        elif lift['type'] in ['surface', 'carpet']:
+        elif lift['type'] in ['surface', 'carpet', 'snowcat']:
             return liftstatus.LiftType.SL
         
         raise liftstatus.exceptions.APIParseException(f"Unknown Type value for lift {lift['name']}: {lift['type']}")
     
     def _map_open_time(self, lift):
+        if not lift['hours'].strip():
+            return None
         return self._map_time(lift['hours'].split('—')[0])
 
     def _map_closed_time(self, lift):
+        if not lift['hours'].strip():
+            return None
         return self._map_time(lift['hours'].split('—')[1])
     
     def _map_time(self, time_segment):

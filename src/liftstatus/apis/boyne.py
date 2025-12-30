@@ -132,5 +132,7 @@ class BoyneMountain(liftstatus.Mountain):
             return liftstatus.LiftStatus.RESTRICTED
         if lift['statusIcon'] in ['delayed']:
             return liftstatus.LiftStatus.DELAYED
+        if lift['statusIcon'] in [None]:
+            return liftstatus.LiftStatus.UNKNOWN
             
         raise liftstatus.exceptions.APIParseException(f"Unknown Status value ({lift['statusIcon']}) for lift {lift['name']}")
