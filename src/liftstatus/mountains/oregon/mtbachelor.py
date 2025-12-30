@@ -34,15 +34,18 @@ class MountBachelor(liftstatus.apis.powdr.POWDRMountain):
     def _map_open_time(self, lift):
         if lift['hours'] in ['', 'Closed']:
             return None
-        return self._map_time(lift['hours'].split(' - ')[0])
+        return self._map_time(lift['hours'], 0)
 
     def _map_closed_time(self, lift):
         if lift['hours'] in ['', 'Closed']:
             return None
-        return self._map_time(lift['hours'].split(' - ')[1])
+        return self._map_time(lift['hours'], 1)
     
-    def _map_time(self, time_segment):
-        if 'WIND HOLD' in time_segment:
+    def _map_time(self, hours, idx):
+        if 'WIND HOLD' in hours.upper():
             return None
+        if 'SKI & RIDE SCHOOL ONLY' in hours.upper():
+            return None
+        time_segment = hours.split(' - ')[idx]
         time_segment = datetime.datetime.strptime(time_segment.upper().replace('.', '').strip(), "%I:%M %p")
         return datetime.time(hour=time_segment.hour, minute=time_segment.minute, tzinfo=self._timezone)
