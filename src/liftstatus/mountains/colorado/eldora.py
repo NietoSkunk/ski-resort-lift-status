@@ -48,12 +48,12 @@ class Eldora(liftstatus.apis.powdr.POWDRMountain):
         raise liftstatus.exceptions.APIParseException(f"Unknown Type value for lift {lift['name']}: {lift['type']}")
 
     def _map_lift_status(self, lift):
-        if lift['hours'] in ['Race Training Only']:
+        if 'Only' in lift['hours']:
             return liftstatus.LiftStatus.RESTRICTED
         return super()._map_lift_status(lift)
 
     def _map_open_time(self, lift):
-        if lift['hours'] in ['Race Training Only']:
+        if 'Only' in lift['hours']:
             return None
         time_segment = self._get_time_segment(lift)
         if time_segment is None:
@@ -61,7 +61,7 @@ class Eldora(liftstatus.apis.powdr.POWDRMountain):
         return self._map_time(time_segment.split(' to ')[0])
 
     def _map_closed_time(self, lift):
-        if lift['hours'] in ['Race Training Only']:
+        if 'Only' in lift['hours']:
             return None
         time_segment = self._get_time_segment(lift)
         if time_segment is None:
