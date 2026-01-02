@@ -371,6 +371,7 @@ def test_mt_brighton():
         'Chair 2': liftstatus.LiftType.CLF_3,
         'Chair 3': liftstatus.LiftType.CLF_4,
         'Chair 4': liftstatus.LiftType.CLF_4,
+        'Chair 5': liftstatus.LiftType.CLF_3,
         'Rope Tow 8': liftstatus.LiftType.SL,
         'Rope Tow 9': liftstatus.LiftType.SL,
         'Rope Tow 12': liftstatus.LiftType.SL,
