@@ -511,6 +511,7 @@ def test_mt_sunapee():
         'Spruce Triple': liftstatus.LiftType.CLF_3,
         'Sunapee Express': liftstatus.LiftType.CLD_4,
         'Sunbowl Express': liftstatus.LiftType.CLD_4,
+        'Small Carpet': liftstatus.LiftType.SL,
     }
 
     # _print_lifts(lifts)
