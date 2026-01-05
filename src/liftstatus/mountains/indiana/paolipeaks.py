@@ -19,7 +19,9 @@ class PaoliPeaks(liftstatus.apis.epic.EpicMountain):
         if lift['Type'] in ['triple']:
             return liftstatus.LiftType.CLF_3
         if lift['Type'] in ['double']:
-            return liftstatus.LiftType.CLF_3
+            return liftstatus.LiftType.CLF_2
+        if lift['Type'] in ['quad']:
+            return liftstatus.LiftType.CLF_4
         if lift['Type'] in ['conveyor']:
             return liftstatus.LiftType.SL
         
