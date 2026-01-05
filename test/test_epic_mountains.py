@@ -348,8 +348,9 @@ def test_paoli_peaks():
     lifts = test_obj.get_lift_status()
     expected_types = {
         '300\' Carpet': liftstatus.LiftType.SL,
-        'Double': liftstatus.LiftType.CLF_3,
+        'Double': liftstatus.LiftType.CLF_2,
         'Triple': liftstatus.LiftType.CLF_3,
+        'Quad': liftstatus.LiftType.CLF_4,
     }
 
     # _print_lifts(lifts)
