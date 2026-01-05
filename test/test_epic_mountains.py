@@ -347,12 +347,9 @@ def test_paoli_peaks():
 
     lifts = test_obj.get_lift_status()
     expected_types = {
-        'Avanti Express #2': liftstatus.LiftType.CLD_6,
-        'Eagle Bahn Gondola #19': liftstatus.LiftType.MGD,
-        'Gondola One': liftstatus.LiftType.MGD,
-        'Little Eagle #15': liftstatus.LiftType.CLD_4,
-        'Mountaintop Express #4': liftstatus.LiftType.CLD_6,
-        'Thunder Cat Carpet #35': liftstatus.LiftType.SL,
+        '300\' Carpet': liftstatus.LiftType.SL,
+        'Double': liftstatus.LiftType.CLF_3,
+        'Triple': liftstatus.LiftType.CLF_3,
     }
 
     # _print_lifts(lifts)
