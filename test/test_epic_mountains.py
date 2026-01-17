@@ -351,6 +351,7 @@ def test_paoli_peaks():
         'Double': liftstatus.LiftType.CLF_2,
         'Triple': liftstatus.LiftType.CLF_3,
         'Quad': liftstatus.LiftType.CLF_4,
+        'CTEC I': liftstatus.LiftType.CLF_3,
     }
 
     # _print_lifts(lifts)
