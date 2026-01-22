@@ -31,7 +31,7 @@ class Loveland(liftstatus.Mountain):
             lift_opt = lift_opt.text.strip().replace(' -', '-').replace('- ', '-')
 
             lift_name = lift_opt.split('-')[0].replace('PTARMIGAN LIFT', 'Ptarmigan')
-            lift_status = liftstatus.LiftStatus[lift_opt.split('-')[1]]
+            lift_status = liftstatus.LiftStatus[lift_opt.split('-')[1].split(' ')[0]]
 
             lift_type = liftstatus.LiftType.UNKNOWN
             if lift_name == 'Rainbow Magic Carpet':
