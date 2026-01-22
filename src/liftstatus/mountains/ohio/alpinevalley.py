@@ -10,7 +10,7 @@ class AlpineValley(liftstatus.apis.epic.EpicMountain):
     def __init__(self, session: requests.Session = requests.Session()):
         super().__init__(
             name="Alpine Valley",
-            server_url="https://www.alpinevalleyohio.com/the-mountain/mountain-conditions/terrain-and-lift-status.aspx",
+            server_url="https://www.alpinevalleyohio.com/the-mountain/mountain-conditions/lift-and-terrain-status.aspx",
             timezone=pytz.timezone('US/Eastern'),
             session=session
         )
