@@ -42,8 +42,9 @@ class MountBachelor(liftstatus.apis.powdr.POWDRMountain):
         return self._map_time(lift['hours'], 1)
     
     def _map_time(self, hours, idx):
-        if ':' not in hours or '/' in hours:
+        if ':' not in hours or '/' in hours or ' ' not in hours:
             return None
+        return None # TODO
         time_segment = hours.split(' - ')[idx]
         time_segment = datetime.datetime.strptime(time_segment.upper().replace('.', '').strip(), "%I:%M %p")
         return datetime.time(hour=time_segment.hour, minute=time_segment.minute, tzinfo=self._timezone)
