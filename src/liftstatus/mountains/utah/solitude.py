@@ -26,7 +26,7 @@ class Solitude(liftstatus.apis.alterra.AlterraMountain):
             return liftstatus.LiftType.CLF_3
         if lift['LiftIcon'] in ['double']:
             return liftstatus.LiftType.CLF_2
-        if lift['LiftIcon'] in ['magic_carpet']:
+        if lift['LiftIcon'] in ['magic_carpet', 'rope_tow']:
             return liftstatus.LiftType.SL
         
         raise liftstatus.exceptions.APIParseException(f"Unknown Type value for lift {lift['Name']}: {lift['LiftIcon']}")

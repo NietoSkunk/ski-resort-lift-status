@@ -342,6 +342,7 @@ def test_solitude():
         'Sunrise': liftstatus.LiftType.CLF_3,
         'Summit Express': liftstatus.LiftType.CLD_4,
         'Honeycomb Return': liftstatus.LiftType.CLF_4,
+        'Soli Parks Tow': liftstatus.LiftType.SL
     }
 
     # _print_lifts(lifts)
