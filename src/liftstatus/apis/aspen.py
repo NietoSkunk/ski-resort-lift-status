@@ -58,21 +58,30 @@ class AspenMountain(liftstatus.Mountain):
                 raise liftstatus.exceptions.APIParseException(f"Unknown Status value for lift: {lift}")
 
             lift_type = liftstatus.LiftType.UNKNOWN
-            if lift['type'] == 'Quad HS':
-                lift_type = liftstatus.LiftType.CLD_4
-            elif lift['type'] == 'Six HS':
-                lift_type = liftstatus.LiftType.CLD_6
-            elif lift['type'] == 'Triple HS':
-                lift_type = liftstatus.LiftType.CLD_3
-            elif lift['type'] == 'Double Fixed':
+            if lift['type'] == '4':
+                if lift['liftName'] in ['Loge Peak', 'Assay Hill', 'Meadows Chairlift', 'Little Nell']:
+                    lift_type = liftstatus.LiftType.CLF_4
+                else:
+                    lift_type = liftstatus.LiftType.CLD_4
+            elif lift['type'] == '6':
+                if 'Gondola' in lift['liftName']:
+                    lift_type = liftstatus.LiftType.MGD
+                else:
+                    lift_type = liftstatus.LiftType.CLD_6
+            elif lift['type'] == '3':
+                if lift['liftName'] == 'Ruthies':
+                    lift_type = liftstatus.LiftType.CLD_3
+                else:
+                    lift_type = liftstatus.LiftType.CLF_3
+            elif lift['type'] == '2':
                 lift_type = liftstatus.LiftType.CLF_2
-            elif lift['type'] == 'Triple Fixed':
-                lift_type = liftstatus.LiftType.CLF_3
-            elif lift['type'] == 'Quad Fixed':
-                lift_type = liftstatus.LiftType.CLF_4
-            elif lift['type'] in ['Gondola 8', 'Gondola 6']:
+            # elif lift['type'] == 'Triple Fixed':
+            #     lift_type = liftstatus.LiftType.CLF_3
+            # elif lift['type'] == 'Quad Fixed':
+            #     lift_type = liftstatus.LiftType.CLF_4
+            elif lift['type'] == '8':
                 lift_type = liftstatus.LiftType.MGD
-            elif lift['type'] == 'Surface':
+            elif lift['type'] == '1':
                 lift_type = liftstatus.LiftType.SL
             else:
                 raise ValueError((lift['liftName'], lift['type']))
