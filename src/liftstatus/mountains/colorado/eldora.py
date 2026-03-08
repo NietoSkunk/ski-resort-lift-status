@@ -53,20 +53,26 @@ class Eldora(liftstatus.apis.powdr.POWDRMountain):
         return super()._map_lift_status(lift)
 
     def _map_open_time(self, lift):
-        if 'Only' in lift['hours']:
+        try:
+            if 'Only' in lift['hours']:
+                return None
+            time_segment = self._get_time_segment(lift)
+            if time_segment is None:
+                return None
+            return self._map_time(time_segment.split(' to ')[0])
+        except:
             return None
-        time_segment = self._get_time_segment(lift)
-        if time_segment is None:
-            return None
-        return self._map_time(time_segment.split(' to ')[0])
 
     def _map_closed_time(self, lift):
-        if 'Only' in lift['hours']:
+        try:
+            if 'Only' in lift['hours']:
+                return None
+            time_segment = self._get_time_segment(lift)
+            if time_segment is None:
+                return None
+            return self._map_time(time_segment.split(' to ')[1])
+        except:
             return None
-        time_segment = self._get_time_segment(lift)
-        if time_segment is None:
-            return None
-        return self._map_time(time_segment.split(' to ')[1])
     
     def _get_time_segment(self, lift):
         current_day_of_week = int(datetime.datetime.now(self._timezone).strftime('%w'))
