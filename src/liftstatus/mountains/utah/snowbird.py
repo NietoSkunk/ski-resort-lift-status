@@ -32,12 +32,12 @@ class Snowbird(liftstatus.apis.powdr.POWDRMountain):
         raise liftstatus.exceptions.APIParseException(f"Unknown Type value for lift {lift['name']}: {lift['type']}")
 
     def _map_open_time(self, lift):
-        if lift['hours'] in ['', 'TBD']:
+        if lift['hours'] in ['', 'TBD', 'CLOSEDFORTHESEASON']:
             return None
         return self._map_time(lift['hours'].split('-')[0])
 
     def _map_closed_time(self, lift):
-        if lift['hours'] in ['', 'TBD']:
+        if lift['hours'] in ['', 'TBD', 'CLOSEDFORTHESEASON']:
             return None
         return self._map_time(lift['hours'].split('-')[1])
     
