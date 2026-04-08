@@ -15,6 +15,7 @@ def test_arapahoe_basin():
         'Black Mountain Express Lift': liftstatus.LiftType.CLD_4,
         'Lenawee Express Lift': liftstatus.LiftType.CLD_6,
         'Pallavicini Lift': liftstatus.LiftType.CLF_2,
+        'Mini Pallavicini Lift': liftstatus.LiftType.CLF_2,
         'Beavers': liftstatus.LiftType.CLF_4,
         'Zuma Lift': liftstatus.LiftType.CLF_4,
         'Lazy J Tow': liftstatus.LiftType.SL,
