@@ -53,7 +53,7 @@ class ArapahoeBasin(liftstatus.Mountain):
                 lift_type = liftstatus.LiftType.CLD_4
             elif lift_name == 'Lenawee Express Lift': # 2 entries?
                 lift_type = liftstatus.LiftType.CLD_6
-            elif lift_name == 'Pallavicini Lift': # 2 entries?
+            elif 'Pallavicini Lift' in lift_name: # 2 entries?
                 lift_type = liftstatus.LiftType.CLF_2
             elif lift_name == 'Beavers':
                 lift_type = liftstatus.LiftType.CLF_4
