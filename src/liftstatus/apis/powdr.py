@@ -51,8 +51,8 @@ class POWDRMountain(liftstatus.Mountain):
                 type=self._map_lift_type(lift),
                 status=self._map_lift_status(lift),
                 updated_at=datetime.datetime.fromtimestamp(lift['updated'], datetime.UTC),
-                open_time=self._map_open_time(lift),
-                closed_time=self._map_closed_time(lift),
+                open_time=None,
+                closed_time=None,
                 wait_time=datetime.timedelta(minutes=int(lift['wait_time'])) if lift['wait_time'] != '' else None
             ))
 
@@ -78,9 +78,3 @@ class POWDRMountain(liftstatus.Mountain):
             return liftstatus.LiftStatus.SCHEDULED
 
         raise liftstatus.exceptions.APIParseException(f"Unknown Status value ({lift['status']}) for lift {lift['name']}")
-
-    def _map_open_time(self, lift):
-        return None
-
-    def _map_closed_time(self, lift):
-        return None

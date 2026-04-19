@@ -40,16 +40,6 @@ class StubMountain(liftstatus.apis.powdr.POWDRMountain):
         if self.map_lift_name is not None:
             return self.map_lift_name(lift)
         return super()._map_lift_name(lift)
-    
-    def _map_open_time(self, lift):
-        if self.map_open_time is not None:
-            return self.map_open_time(lift)
-        return super()._map_open_time(lift)
-    
-    def _map_closed_time(self, lift):
-        if self.map_closed_time is not None:
-            return self.map_closed_time(lift)
-        return super()._map_closed_time(lift)
 
 def test_bad_error_code(requests_mock):
     requests_mock.get(TEST_URL, status_code=404)
